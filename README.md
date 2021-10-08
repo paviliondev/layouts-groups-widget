@@ -13,7 +13,7 @@ The Groups Widget allows each user to see what groups they are in on a sidebar u
 | ⚙️ **Widget**         | [Layouts Groups Widget](https://github.com/paviliondev/layouts-groups-widget)     |
 | 🔌 **Base Plugin**    | [Custom Layouts Widget](https://meta.discourse.org/t/custom-layouts-plugin/55208) |
 | 👨‍💻 **Author**         | [Keegan George](https://github.com/keegangeorge/)                                 |
-| #️⃣ **Version**        | `0.1`                                                                             |
+| #️⃣ **Version**        | `1.0`                                                                             |
 | ❓ **How to Install** | [Installation Guide](https://thepavilion.io/t/installation-and-setup/3200)        |
 | 🐛 **Found a bug?**   | [Submit a bug report](https://thepavilion.io/w/bug-report/steps/intro)            |
 | ✋ **Have an idea?**  | [Submit a feature request](https://thepavilion.io/w/bug-report/steps/intro)       |
