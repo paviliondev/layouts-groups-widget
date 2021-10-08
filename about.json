@@ -2,7 +2,7 @@
   "name": "Layouts Groups Widget",
   "theme_version": "0.1",
   "about_url": null,
-  "license_url": null,
+  "license_url": "https://github.com/paviliondev/layouts-groups-widget/blob/main/LICENSE.txt",
   "assets": {
   },
   "component": true
