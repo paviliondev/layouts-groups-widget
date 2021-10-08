@@ -1,4 +1,4 @@
-import { iconNode } from "discourse-common/lib/icon-library";
+import { iconNode } from 'discourse-common/lib/icon-library';
 import DiscourseURL from 'discourse/lib/url';
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
@@ -18,12 +18,16 @@ try {
 export default layouts.createLayoutsWidget('group-list', {
   getWidgetHeader() {
     if (settings.show_header) {
-      return h('a.layouts-group-list-header', {
-        attributes: {
-          href: '/groups',
-          title: I18n.t(themePrefix('groups_widget.title'))
-        }
-      }, I18n.t(themePrefix('groups_widget.title')));
+      return h(
+        'a.layouts-group-list-header',
+        {
+          attributes: {
+            href: '/groups',
+            title: I18n.t(themePrefix('groups_widget.title')),
+          },
+        },
+        I18n.t(themePrefix('groups_widget.title'))
+      );
     }
 
     return null;
@@ -35,6 +39,15 @@ export default layouts.createLayoutsWidget('group-list', {
     const groupItems = [];
     const title = this.getWidgetHeader();
     const hiddenGroups = settings.hidden_groups.split('|');
+
+    if (groups == null || groups == undefined) return;
+
+    if (groups.length === 0) {
+      return [
+        h('a.layouts-group-list-header', I18n.t(themePrefix('groups_widget.title'))),
+        h('p.layouts-no-public-groups', I18n.t(themePrefix('groups_widget.no_public')))
+      ];
+    }
 
     groups.forEach((group) => {
       if (!hiddenGroups.includes(group.id.toString())) {
@@ -63,10 +76,7 @@ createWidget('layouts-group-link', {
   },
 
   html(attrs) {
-    const contents = [
-      this.getGroupTitle(attrs),
-      this.isOwner(attrs),
-    ];
+    const contents = [this.getGroupTitle(attrs), this.isOwner(attrs)];
     return contents;
   },
 

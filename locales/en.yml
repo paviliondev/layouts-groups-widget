@@ -2,4 +2,5 @@ en:
   theme_metadata:
     description: 'A widget for the layouts plugin to see current groups'
   groups_widget:
-    title: 'My Groups'
+    title: 'Groups'
+    no_public: 'No groups in this community are public. Please login to view groups'

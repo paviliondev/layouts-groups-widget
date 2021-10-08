@@ -5,12 +5,12 @@ export default {
 
   initialize(container) {
     const siteSettings = container.lookup('site-settings:main');
+    const site = container.lookup('site:main');
+
     let currentUser;
     withPluginApi('0.12.2', (api) => {
       currentUser = api.getCurrentUser();
     });
-
-    const { groups } = currentUser;
 
     let layouts;
     let layoutsError;
@@ -27,9 +27,16 @@ export default {
 
     if (layoutsError) return;
 
-    const props = {
-      groups,
-    };
+    const props = {};
+
+    if (!currentUser) {
+      const { groups } = site;
+      props['groups'] = groups;
+    } else {
+      const { groups } = currentUser;
+      props['groups'] = groups;
+    }
+
     layouts.addSidebarProps(props);
   },
 };
