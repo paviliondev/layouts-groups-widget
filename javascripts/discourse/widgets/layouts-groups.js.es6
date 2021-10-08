@@ -1,7 +1,7 @@
-import { createWidget } from 'discourse/widgets/widget';
-import { h } from 'virtual-dom';
 import { iconNode } from "discourse-common/lib/icon-library";
 import DiscourseURL from 'discourse/lib/url';
+import { createWidget } from 'discourse/widgets/widget';
+import { h } from 'virtual-dom';
 
 let layouts;
 
@@ -16,17 +16,24 @@ try {
 }
 
 export default layouts.createLayoutsWidget('group-list', {
+  getWidgetHeader() {
+    if (settings.show_header) {
+      return h('a.layouts-group-list-header', {
+        attributes: {
+          href: '/groups',
+          title: I18n.t(themePrefix('groups_widget.title'))
+        }
+      }, I18n.t(themePrefix('groups_widget.title')));
+    }
+
+    return null;
+  },
+
   html(attrs) {
     const { groups } = attrs;
     const contents = [];
     const groupItems = [];
-    const title = h('a.layouts-group-list-header', {
-      attributes: {
-        href: '/groups',
-        title: I18n.t(themePrefix('groups_widget.title'))
-      }
-    }, I18n.t(themePrefix('groups_widget.title')));
-    
+    const title = this.getWidgetHeader();
     groups.forEach((group) => {
       groupItems.push(this.attach('layouts-group-link', group));
     });

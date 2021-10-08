@@ -1,0 +1,5 @@
+show_header:
+  default: true
+  type: bool
+  description:
+    en: 'Toggle the title header in the widget'

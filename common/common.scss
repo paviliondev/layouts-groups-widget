@@ -2,6 +2,8 @@
   a.layouts-group-list-header {
     transition: color 0.25s ease;
     color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: block;
     font: {
       size: var(--font-up-1);
       weight: bold;
@@ -15,8 +17,7 @@
 
   &-items {
     list-style: none;
-    margin-left: 0;
-    margin-bottom: 0;
+    margin: 0;
 
     .layouts-group-link {
       display: flex;
