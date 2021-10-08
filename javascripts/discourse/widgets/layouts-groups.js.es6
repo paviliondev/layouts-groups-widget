@@ -34,8 +34,12 @@ export default layouts.createLayoutsWidget('group-list', {
     const contents = [];
     const groupItems = [];
     const title = this.getWidgetHeader();
+    const hiddenGroups = settings.hidden_groups.split('|');
+
     groups.forEach((group) => {
-      groupItems.push(this.attach('layouts-group-link', group));
+      if (!hiddenGroups.includes(group.id.toString())) {
+        groupItems.push(this.attach('layouts-group-link', group));
+      }
     });
 
     contents.push(title, h('ul.layouts-group-list-items', groupItems));

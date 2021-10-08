@@ -3,3 +3,9 @@ show_header:
   type: bool
   description:
     en: 'Toggle the title header in the widget'
+hidden_groups:
+  type: list
+  list_type: group
+  default: ''
+  description:
+    en: 'Select which groups should be hidden from the widget'
