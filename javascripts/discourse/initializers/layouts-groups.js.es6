@@ -1,8 +1,17 @@
+import { withPluginApi } from 'discourse/lib/plugin-api';
+
 export default {
   name: 'layouts-groups',
 
   initialize(container) {
     const siteSettings = container.lookup('site-settings:main');
+    let currentUser;
+    withPluginApi('0.12.2', (api) => {
+      currentUser = api.getCurrentUser();
+    });
+
+    const { groups } = currentUser;
+
     let layouts;
     let layoutsError;
 
@@ -19,6 +28,7 @@ export default {
     if (layoutsError) return;
 
     const props = {
+      groups,
     };
     layouts.addSidebarProps(props);
   },

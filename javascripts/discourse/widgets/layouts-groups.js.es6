@@ -1,4 +1,10 @@
+import { createWidget } from 'discourse/widgets/widget';
+import { h } from 'virtual-dom';
+import { iconNode } from "discourse-common/lib/icon-library";
+import DiscourseURL from 'discourse/lib/url';
+
 let layouts;
+
 // Import layouts plugin with safegaurd for when widget exists without plugin:
 try {
   layouts = requirejs(
@@ -11,6 +17,49 @@ try {
 
 export default layouts.createLayoutsWidget('group-list', {
   html(attrs) {
+    const { groups } = attrs;
+    const contents = [];
+    const groupItems = [];
+    const title = h('a.layouts-group-list-header', {
+      attributes: {
+        href: '/groups',
+        title: I18n.t(themePrefix('groups_widget.title'))
+      }
+    }, I18n.t(themePrefix('groups_widget.title')));
+    
+    groups.forEach((group) => {
+      groupItems.push(this.attach('layouts-group-link', group));
+    });
+
+    contents.push(title, h('ul.layouts-group-list-items', groupItems));
+
+    return contents;
   },
 });
 
+createWidget('layouts-group-link', {
+  tagName: 'li.layouts-group-link',
+  buildKey: (attrs) => `layouts-group-link-${attrs.id}`,
+
+  getGroupTitle(group) {
+    return h('span.group-title', group.name);
+  },
+
+  isOwner(group) {
+    if (group.owner) {
+      return h('span.group-owner-icon', iconNode('shield-alt'));
+    }
+  },
+
+  html(attrs) {
+    const contents = [
+      this.getGroupTitle(attrs),
+      this.isOwner(attrs),
+    ];
+    return contents;
+  },
+
+  click() {
+    DiscourseURL.routeTo(`/groups/${this.attrs.name}`);
+  },
+});
