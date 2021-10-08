@@ -1,0 +1,41 @@
+.layouts-group-list {
+  a.layouts-group-list-header {
+    transition: color 0.25s ease;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    display: block;
+    font: {
+      size: var(--font-up-1);
+      weight: bold;
+    }
+
+    &:hover,
+    &:focus {
+      color: var(--primary-low-mid);
+    }
+  }
+
+  &-items {
+    list-style: none;
+    margin: 0;
+
+    .layouts-group-link {
+      display: flex;
+      align-items: center;
+      padding: 0.25rem 0;
+      color: var(--primary-medium);
+      .group-title {
+        transition: color 0.25s ease;
+        &:hover {
+          cursor: pointer;
+          color: var(--primary-low-mid);
+        }
+      }
+
+      .group-owner-icon {
+        margin-left: 5px;
+        font-size: var(--font-down-3);
+      }
+    }
+  }
+}

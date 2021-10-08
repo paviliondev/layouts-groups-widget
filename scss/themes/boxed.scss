@@ -1,0 +1,27 @@
+@if $style == 'boxed' {
+  .layouts-group-list {
+    &-items {
+      .layouts-group-link {
+        border: 1px solid var(--primary-low);
+        margin: 0.5rem 0;
+        padding: 0.35rem;
+        background: var(--primary-very-low);
+        &:hover,
+        &:focus {
+          cursor: pointer;
+          background: var(--primary-low);
+        }
+
+        .group-owner-icon {
+          order: 1;
+          margin-left: 0;
+          margin-right: 5px;
+        }
+
+        .group-title {
+          order: 2;
+        }
+      }
+    }
+  }
+}

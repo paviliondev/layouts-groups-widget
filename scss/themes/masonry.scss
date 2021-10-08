@@ -1,0 +1,26 @@
+@if $style == 'masonry' {
+  .layouts-group-list {
+    &-items {
+      display: flex;
+      flex-flow: row wrap;
+
+      .layouts-group-link {
+        background: var(--primary-low);
+        margin: 0.25rem;
+        padding: 0.5rem;
+        transition: background-color 0.25s ease;
+
+        &:hover,
+        &:focus {
+          background: var(--primary-medium);
+          color: var(--secondary);
+        }
+
+        .group-title:hover,
+        .group-title:focus {
+          color: var(--secondary);
+        }
+      }
+    }
+  }
+}

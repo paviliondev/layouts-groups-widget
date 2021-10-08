@@ -9,3 +9,13 @@ hidden_groups:
   default: ''
   description:
     en: 'Select which groups should be hidden from the widget'
+style:
+  type: enum
+  default: 'normal'
+  choices:
+    - 'normal'
+    - 'boxed'
+    - 'modern'
+    - 'masonry'
+  description:
+    en: 'Select a theme style for the widget (use normal if you would like to override with your own custom CSS)'
