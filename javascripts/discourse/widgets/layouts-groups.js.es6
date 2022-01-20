@@ -81,6 +81,12 @@ createWidget('layouts-group-link', {
   },
 
   click() {
-    DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
+    if (group.is_group_user && group.has_messages) {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
+    } else {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}`);
+    }
   },
 });
+
+
