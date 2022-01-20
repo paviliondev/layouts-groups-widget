@@ -22,7 +22,7 @@ export default layouts.createLayoutsWidget('group-list', {
         'a.layouts-group-list-header',
         {
           attributes: {
-            href: '/groups',
+            href: '/g?type=my',
             title: I18n.t(themePrefix('groups_widget.title')),
           },
         },
@@ -81,6 +81,6 @@ createWidget('layouts-group-link', {
   },
 
   click() {
-    DiscourseURL.routeTo(`/groups/${this.attrs.name}`);
+    DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
   },
 });
