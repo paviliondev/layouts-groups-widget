@@ -1,4 +1,5 @@
 import { iconNode } from 'discourse-common/lib/icon-library';
+import { ajax } from 'discourse/lib/ajax';
 import DiscourseURL from 'discourse/lib/url';
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
@@ -44,13 +45,23 @@ export default layouts.createLayoutsWidget('group-list', {
 
     if (groups.length === 0) {
       return [
-        h('a.layouts-group-list-header', I18n.t(themePrefix('groups_widget.title'))),
-        h('p.layouts-no-public-groups', I18n.t(themePrefix('groups_widget.no_public')))
+        h(
+          'a.layouts-group-list-header',
+          I18n.t(themePrefix('groups_widget.title'))
+        ),
+        h(
+          'p.layouts-no-public-groups',
+          I18n.t(themePrefix('groups_widget.no_public'))
+        ),
       ];
     }
 
     groups.forEach((group) => {
       if (!hiddenGroups.includes(group.id.toString())) {
+        ajax(`/groups/${group.name}.json`).then((result) => {
+          const groupAttrs = result.group;
+          group.groupAttrs = groupAttrs;
+        });
         groupItems.push(this.attach('layouts-group-link', group));
       }
     });
@@ -81,8 +92,12 @@ createWidget('layouts-group-link', {
   },
 
   click() {
+    const { groupAttrs } = this.attrs;
+
+    if (groupAttrs.has_messages) {
       DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
+    } else {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}`);
+    }
   },
 });
-
-
