@@ -1,3 +1,4 @@
+import { ajax } from 'discourse/lib/ajax';
 import { withPluginApi } from 'discourse/lib/plugin-api';
 
 export default {
@@ -37,6 +38,15 @@ export default {
       props['groups'] = groups;
     }
 
-    layouts.addSidebarProps(props);
+    props.groups.forEach((group) => {
+      ajax(`/groups/${group.name}.json`).then((result) => {
+        const groupAttrs = result.group;
+        group.groupAttrs = groupAttrs;
+
+        layouts.addSidebarProps(props);
+      });
+    });
+
+    console.log('initializer', props.groups);
   },
 };

@@ -1,5 +1,4 @@
 import { iconNode } from 'discourse-common/lib/icon-library';
-import { ajax } from 'discourse/lib/ajax';
 import DiscourseURL from 'discourse/lib/url';
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
@@ -58,14 +57,9 @@ export default layouts.createLayoutsWidget('group-list', {
 
     groups.forEach((group) => {
       if (!hiddenGroups.includes(group.id.toString())) {
-        ajax(`/groups/${group.name}.json`).then((result) => {
-          const groupAttrs = result.group;
-          group.groupAttrs = groupAttrs;
-        });
         groupItems.push(this.attach('layouts-group-link', group));
       }
     });
-
     contents.push(title, h('ul.layouts-group-list-items', groupItems));
 
     return contents;
