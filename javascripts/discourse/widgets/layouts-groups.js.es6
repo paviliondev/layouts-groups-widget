@@ -70,6 +70,21 @@ createWidget('layouts-group-link', {
   tagName: 'li.layouts-group-link',
   buildKey: (attrs) => `layouts-group-link-${attrs.id}`,
 
+  buildAttributes() {
+    const { groupAttrs } = this.attrs;
+    let displayName = this.attrs.name;
+
+    if (groupAttrs && groupAttrs.full_name) {
+      displayName = groupAttrs.full_name;
+    }
+
+    const attributes = {
+      title: displayName,
+    };
+
+    return attributes;
+  },
+
   getGroupTitle(group) {
     return h('span.group-title', group.name);
   },
