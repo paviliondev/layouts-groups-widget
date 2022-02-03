@@ -22,7 +22,7 @@ export default layouts.createLayoutsWidget('group-list', {
         'a.layouts-group-list-header',
         {
           attributes: {
-            href: '/groups',
+            href: '/g?type=my',
             title: I18n.t(themePrefix('groups_widget.title')),
           },
         },
@@ -44,8 +44,14 @@ export default layouts.createLayoutsWidget('group-list', {
 
     if (groups.length === 0) {
       return [
-        h('a.layouts-group-list-header', I18n.t(themePrefix('groups_widget.title'))),
-        h('p.layouts-no-public-groups', I18n.t(themePrefix('groups_widget.no_public')))
+        h(
+          'a.layouts-group-list-header',
+          I18n.t(themePrefix('groups_widget.title'))
+        ),
+        h(
+          'p.layouts-no-public-groups',
+          I18n.t(themePrefix('groups_widget.no_public'))
+        ),
       ];
     }
 
@@ -54,7 +60,6 @@ export default layouts.createLayoutsWidget('group-list', {
         groupItems.push(this.attach('layouts-group-link', group));
       }
     });
-
     contents.push(title, h('ul.layouts-group-list-items', groupItems));
 
     return contents;
@@ -64,6 +69,21 @@ export default layouts.createLayoutsWidget('group-list', {
 createWidget('layouts-group-link', {
   tagName: 'li.layouts-group-link',
   buildKey: (attrs) => `layouts-group-link-${attrs.id}`,
+
+  buildAttributes() {
+    const { groupAttrs } = this.attrs;
+    let displayName = this.attrs.name;
+
+    if (groupAttrs && groupAttrs.full_name) {
+      displayName = groupAttrs.full_name;
+    }
+
+    const attributes = {
+      title: displayName,
+    };
+
+    return attributes;
+  },
 
   getGroupTitle(group) {
     return h('span.group-title', group.name);
@@ -81,6 +101,12 @@ createWidget('layouts-group-link', {
   },
 
   click() {
-    DiscourseURL.routeTo(`/groups/${this.attrs.name}`);
+    const { groupAttrs } = this.attrs;
+
+    if (groupAttrs.has_messages) {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
+    } else {
+      DiscourseURL.routeTo(`/g/${this.attrs.name}`);
+    }
   },
 });
