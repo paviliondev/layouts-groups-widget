@@ -46,9 +46,10 @@ createWidget('layouts-group-link', {
   },
 
   isOwner(group) {
-    if (group.owner) {
-      return h('span.group-owner-icon', iconNode('shield-alt'));
-    }
+    if (!settings.show_group_owner_icon) return;
+    if (!group.owner) return;
+
+    return h('span.group-owner-icon', iconNode('shield-alt'));
   },
 
   html(attrs) {

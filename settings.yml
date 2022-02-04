@@ -17,6 +17,12 @@ show_group_icons:
   description:
     en: 'Toggle to show or hide the group icons. (Note: when toggled and no icons are set for the group, a default icon will be used)'
 
+show_group_owner_icon:
+  type: bool
+  default: true
+  description:
+    en: 'Toggle to show or hide the group owner icon'
+
 style:
   type: enum
   default: 'normal'
