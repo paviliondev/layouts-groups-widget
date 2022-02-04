@@ -1,5 +1,3 @@
-import { iconNode } from 'discourse-common/lib/icon-library';
-import DiscourseURL from 'discourse/lib/url';
 import { createWidget } from 'discourse/widgets/widget';
 import { h } from 'virtual-dom';
 
@@ -63,50 +61,5 @@ export default layouts.createLayoutsWidget('group-list', {
     contents.push(title, h('ul.layouts-group-list-items', groupItems));
 
     return contents;
-  },
-});
-
-createWidget('layouts-group-link', {
-  tagName: 'li.layouts-group-link',
-  buildKey: (attrs) => `layouts-group-link-${attrs.id}`,
-
-  buildAttributes() {
-    const { groupAttrs } = this.attrs;
-    let displayName = this.attrs.name;
-
-    if (groupAttrs && groupAttrs.full_name) {
-      displayName = groupAttrs.full_name;
-    }
-
-    const attributes = {
-      title: displayName,
-    };
-
-    return attributes;
-  },
-
-  getGroupTitle(group) {
-    return h('span.group-title', group.name);
-  },
-
-  isOwner(group) {
-    if (group.owner) {
-      return h('span.group-owner-icon', iconNode('shield-alt'));
-    }
-  },
-
-  html(attrs) {
-    const contents = [this.getGroupTitle(attrs), this.isOwner(attrs)];
-    return contents;
-  },
-
-  click() {
-    const { groupAttrs } = this.attrs;
-
-    if (groupAttrs.has_messages) {
-      DiscourseURL.routeTo(`/g/${this.attrs.name}/messages`);
-    } else {
-      DiscourseURL.routeTo(`/g/${this.attrs.name}`);
-    }
   },
 });

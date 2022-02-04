@@ -40,8 +40,8 @@ export default {
 
     props.groups.forEach((group) => {
       ajax(`/groups/${group.name}.json`).then((result) => {
-        const groupAttrs = result.group;
-        group.groupAttrs = groupAttrs;
+        const extras = result.group;
+        group.extras = extras;
 
         layouts.addSidebarProps(props);
       });
