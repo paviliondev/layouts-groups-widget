@@ -3,12 +3,20 @@ show_header:
   type: bool
   description:
     en: 'Toggle the title header in the widget'
+
 hidden_groups:
   type: list
   list_type: group
   default: ''
   description:
     en: 'Select which groups should be hidden from the widget'
+
+show_group_icons:
+  type: bool
+  default: true
+  description:
+    en: 'Toggle to show or hide the group icons. (Note: when toggled and no icons are set for the group, a default icon will be used)'
+
 style:
   type: enum
   default: 'normal'

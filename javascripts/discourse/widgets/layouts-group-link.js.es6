@@ -22,6 +22,7 @@ createWidget('layouts-group-link', {
   },
 
   getGroupIcon(group) {
+    if (!settings.show_group_icons) return;
     if (!group.extras) return;
     let icon = '';
 
