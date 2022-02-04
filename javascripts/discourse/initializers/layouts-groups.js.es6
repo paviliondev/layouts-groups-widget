@@ -46,7 +46,5 @@ export default {
         layouts.addSidebarProps(props);
       });
     });
-
-    console.log('initializer', props.groups);
   },
 };
