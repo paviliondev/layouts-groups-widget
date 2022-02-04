@@ -6,7 +6,7 @@
 
       .layouts-group-link {
         background: var(--primary-low);
-        margin: 0.25rem;
+        margin: 0.25rem 1rem;
         padding: 0.5rem;
         transition: background-color 0.25s ease;
 
@@ -22,5 +22,9 @@
         }
       }
     }
+  }
+
+  .layouts-sidebar-minimized .layouts-group-list .layouts-group-list-items {
+    flex-direction: column;
   }
 }

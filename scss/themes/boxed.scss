@@ -3,9 +3,10 @@
     &-items {
       .layouts-group-link {
         border: 1px solid var(--primary-low);
-        margin: 0.5rem 0;
+        margin: 0.5rem 1rem;
         padding: 0.35rem;
         background: var(--primary-very-low);
+
         &:hover,
         &:focus {
           cursor: pointer;
