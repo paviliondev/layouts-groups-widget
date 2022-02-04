@@ -54,3 +54,15 @@
     color: var(--primary-low-mid);
   }
 }
+
+.layouts-sidebar-minimized .layouts-group-list {
+  a.layouts-group-list-header,
+  .group-title,
+  .group-owner-icon {
+    display: none;
+  }
+
+  .group-icon {
+    margin-right: 0;
+  }
+}
