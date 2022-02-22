@@ -20,7 +20,7 @@ export default layouts.createLayoutsWidget('group-list', {
         'a.layouts-group-list-header',
         {
           attributes: {
-            href: '/g?type=my',
+            href: settings.header_link,
             title: I18n.t(themePrefix('groups_widget.title')),
           },
         },
