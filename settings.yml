@@ -7,7 +7,7 @@ show_header:
 hidden_groups:
   type: list
   list_type: group
-  default: ''
+  default: trust_level_0|trust_level_1|trust_level_2|trust_level_3|trust_level_4|staff|everyone
   description:
     en: 'Select which groups should be hidden from the widget'
 
