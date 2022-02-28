@@ -7,7 +7,7 @@ show_header:
 hidden_groups:
   type: list
   list_type: group
-  default: ''
+  default: 10|11|12|13|14|3|0
   description:
     en: 'Select which groups should be hidden from the widget'
 
