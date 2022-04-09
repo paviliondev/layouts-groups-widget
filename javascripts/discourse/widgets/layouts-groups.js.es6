@@ -27,14 +27,7 @@ export default layouts.createLayoutsWidget('group-list', {
       I18n.t(themePrefix('groups_widget.title'))
       );
      } else {
-     return h(
-       'a.layouts-group-list-header', 
-        {
-          attributes: {
-            title: I18n.t(themePrefix('groups_widget.title')),
-          },
-        },       
-        I18n.t(themePrefix('groups_widget.title')));
+     return h('h3.layouts-group-list-header', I18n.t(themePrefix('groups_widget.title')));
      }
     
     return null;
