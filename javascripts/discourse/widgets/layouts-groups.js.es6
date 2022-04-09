@@ -15,22 +15,25 @@ try {
 
 export default layouts.createLayoutsWidget('group-list', {
   getWidgetHeader() {
-    if (settings.show_header) {
-      return h(
-        'a.layouts-group-list-header',
+    if (settings.header_link) {
+     return h(
+       'a.layouts-group-list-header',
         {
           attributes: {
             href: settings.header_link,
             title: I18n.t(themePrefix('groups_widget.title')),
           },
         },
-        I18n.t(themePrefix('groups_widget.title'))
+      I18n.t(themePrefix('groups_widget.title'))
       );
-    }
+   } else {
+     return h('h3.layouts-group-list-header', I18n.t(themePrefix('groups_widget.title')));
+   }
 
     return null;
   },
 
+  
   html(attrs) {
     const { groups } = attrs;
     const contents = [];
