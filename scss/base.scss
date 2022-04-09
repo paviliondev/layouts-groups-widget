@@ -1,6 +1,6 @@
 .layouts-group-list {
   padding: 0.7rem 0;
-  layouts-group-list-header {
+  a.layouts-group-list-header, h3.layouts-group-list-header {
     transition: color 0.25s ease;
     color: var(--primary);
     margin-bottom: 0.25rem;
