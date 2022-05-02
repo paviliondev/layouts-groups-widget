@@ -1,6 +1,6 @@
 .layouts-group-list {
   padding: 0.7rem 0;
-  a.layouts-group-list-header, {
+  a.layouts-group-list-header {
     transition: color 0.25s ease;
     color: var(--primary);
     margin-bottom: 0.25rem;
@@ -16,12 +16,12 @@
       color: var(--primary-low-mid);
     }
   }
-  
+
   h3.layouts-group-list-header {
     margin-bottom: 0.25rem;
     padding: 0.5rem 1rem;
   }
-    
+
   &-items {
     list-style: none;
     margin: 0;
