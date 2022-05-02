@@ -4,6 +4,12 @@ show_header:
   description:
     en: 'Toggle the title header in the widget'
 
+header_link:
+  default: /g
+  type: string
+  description:
+    en: 'Where the header links to.'
+
 hidden_groups:
   type: list
   list_type: group
